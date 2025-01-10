@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browser Focus Test</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+        :root {
+            --mantle: #1e1e2e;
+            --base: #302d41;
+            --text: #cdd6f4;
+            --green: #a6e3a1;
+            --red: #f38ba8;
+        }
+
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: "Quicksand", sans-serif;
+            color: var(--text);
+            background-color: var(--mantle);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        #status {
+            font-size: 2rem;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        body.focused {
+            background-color: var(--green);
+            color: var(--base);
+        }
+
+        body.unfocused {
+            background-color: var(--red);
+            color: var(--mantle);
+        }
+    </style>
+</head>
+<body class="focused">
+    <div id="status">This page is currently focused</div>
+
+    <script>
+        const statusElement = document.getElementById("status");
+
+        function updateFocusState() {
+            if (document.hasFocus()) {
+                document.body.classList.remove("unfocused");
+                document.body.classList.add("focused");
+                document.title = "In focus! | Browser Focus Test"
+                statusElement.textContent = "This page is currently focused.";
+            } else {
+                document.body.classList.remove("focused");
+                document.body.classList.add("unfocused");
+                document.title = "Out of focus!! | Browser Focus Test"
+                statusElement.textContent = "This page is currently unfocused!";
+            }
+        }
+
+        window.addEventListener("focus", updateFocusState);
+        window.addEventListener("blur", updateFocusState);
+
+        updateFocusState();
+    </script>
+</body>
+</html>
