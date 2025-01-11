@@ -53,12 +53,12 @@
             if (document.hasFocus()) {
                 document.body.classList.remove("unfocused");
                 document.body.classList.add("focused");
-                document.title = "In focus! | Browser Focus Test"
+                document.title = "In focus! | Browser Focus Test";
                 statusElement.textContent = "This page is currently focused.";
             } else {
                 document.body.classList.remove("focused");
                 document.body.classList.add("unfocused");
-                document.title = "Out of focus!! | Browser Focus Test"
+                document.title = "Out of focus!! | Browser Focus Test";
                 statusElement.textContent = "This page is currently unfocused!";
             }
         }
